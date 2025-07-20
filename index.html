@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife - Your Free Fitness Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>FitLife</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#workouts">Workouts</a></li>
+        <li><a href="#nutrition">Nutrition</a></li>
+        <li><a href="#bmi">BMI Calculator</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h2>Welcome to FitLife</h2>
+    <p>Your 100% free fitness guide — no apps, no fees, just results!</p>
+    <blockquote id="quote"></blockquote>
+  </section>
+
+  <section id="workouts">
+    <h2>Daily Workouts</h2>
+    <ul>
+      <li><strong>Monday:</strong> Full Body HIIT</li>
+      <li><strong>Tuesday:</strong> Cardio + Abs</li>
+      <li><strong>Wednesday:</strong> Upper Body Strength</li>
+      <li><strong>Thursday:</strong> Yoga & Flexibility</li>
+      <li><strong>Friday:</strong> Lower Body Power</li>
+      <li><strong>Weekend:</strong> Rest & Recovery</li>
+    </ul>
+  </section>
+
+  <section id="nutrition">
+    <h2>Nutrition Tips</h2>
+    <p>Eat clean, stay hydrated, and fuel your workouts with these tips:</p>
+    <ul>
+      <li>Drink 2–3 liters of water daily</li>
+      <li>Include protein with every meal</li>
+      <li>Avoid processed sugar</li>
+      <li>Eat plenty of fruits and veggies</li>
+    </ul>
+  </section>
+
+  <section id="bmi">
+    <h2>BMI Calculator</h2>
+    <p>Enter your height (cm) and weight (kg) below:</p>
+    <input type="number" id="height" placeholder="Height in cm" />
+    <input type="number" id="weight" placeholder="Weight in kg" />
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p id="bmi-result"></p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Questions or suggestions? Email us at: <a href="mailto:fitlife@support.com">fitlife@support.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FitLife. Stay fit, stay healthy!</p>
+  </footer>
+
+  <script>
+  function calculateBMI() {
+    const height = parseFloat(document.getElementById('height').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
+    let result = '';
+    if (bmi < 18.5) result = 'Underweight';
+    else if (bmi < 25) result = 'Normal';
+    else if (bmi < 30) result = 'Overweight';
+    else result = 'Obese';
+    document.getElementById('bmi-result').innerText = `Your BMI is ${bmi} (${result})`;
+  }
+
+  const quotes = [
+    "Push yourself, because no one else is going to do it for you.",
+    "Fitness is not about being better than someone else. It's about being better than you used to be.",
+    "The only bad workout is the one that didn’t happen.",
+    "Train insane or remain the same.",
+    "Your body can stand almost anything. It’s your mind you have to convince."
+  ];
+  document.addEventListener('DOMContentLoaded', () => {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').innerText = randomQuote;
+  });
+</script>
+</body>
+</html>
